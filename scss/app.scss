@@ -38,3 +38,410 @@
 //   "foundation/components/type",
 //   "foundation/components/offcanvas",
 //   "foundation/components/visibility";
+
+body, html {
+	padding: 0;
+	margin: 0;
+	background: url(http://aprillynndesigns.com/wp-content/uploads/2012/11/small-background.jpg);
+	font-family: 'Raleway', sans-serif;
+}
+
+.primary {
+	color: $primary-color;
+}
+.isabella {
+	font-family: isabella;
+}
+.overlay {
+	  opacity: 0;
+	  visibility: hidden;
+	  -webkit-transition: opacity 0.5s, visibility 0s 0.5s;
+	  transition: opacity 0.5s, visibility 0s 0.5s;
+	    position: fixed;
+	  width: 100%;
+	  height: 100%;
+	  top: 0;
+	  left: 0;
+	  background: $primary-color;
+}
+
+.overlay.open {
+	  opacity: 1;
+	  visibility: visible;
+	  -webkit-transition: opacity 0.5s;
+	  transition: opacity 0.5s;
+}
+
+@font-face {
+	font-family: Isabella;
+	src: url(web-font/Isabella.woff);
+}
+.ribbon {
+	position: relative;
+	&.h4 {
+		position: relative;
+		font-family: Isabella;
+		color: $primary-color;
+		text-align: center;
+		font-size: 45px;
+		line-height: 30px;
+		margin: 1.3rem 0;
+			&:before {
+			content:'';
+			border-top:1px solid $secondary-color;
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			}
+			&:after {
+				content: '';
+				border-bottom: 1px solid $secondary-color;
+				position: absolute;
+				bottom: 0;
+				left: 0;
+				width: 100%;
+			}
+	}
+	
+	.left-ribbon {
+		&:before {
+			content: '';
+		    border-left: 1px solid $secondary-color;
+		    position: absolute;
+		    height: 50%;
+		    transform: skew(35deg);
+		    left: 5px;
+		    top: 0;
+		}
+		&:after {
+			content: '';
+		    border-left: 1px solid $secondary-color;
+		    position: absolute;
+		    height: 50%;
+		    transform: skew(-35deg);
+		    left: 5px;
+		    bottom: 0;
+		}
+	}
+	.right-ribbon {
+		&:before {
+			content: '';
+		    border-right: 1px solid $secondary-color;
+		    position: absolute;
+		    height: 50%;
+		    transform: skew(-35deg);
+		    right: 5px;
+		    top: 0;
+		}
+		&:after {
+			content: '';
+		    border-right: 1px solid $secondary-color;
+		    position: absolute;
+		    height: 50%;
+		    transform: skew(35deg);
+		    right: 5px;
+		    bottom: 0;
+		}
+	}
+}
+
+.canvas {
+	border-left: 3px solid $secondary-color;
+	ul {
+		li {
+			.submenu {
+				display: none;
+			}
+		}
+	}
+}
+.page-wrapper {
+	hr {
+	    background: url(../images/hr.png) repeat-x top left;
+	    height: 30px;
+	    border: 0;
+	}
+	background: white;
+	padding: 2rem;
+	 box-shadow: 0 0 8px 1px rgba(0, 0, 0, 0.25);
+    -moz-box-shadow: 0 0 8px 1px rgba(0, 0, 0, 0.25);
+    -webkit-box-shadow: 0 0 8px 1px rgba(0, 0, 0, 0.25);
+    width: 1000px;
+    display: table;
+    margin: 2.3rem auto;
+    @media #{$small-only} {
+	    padding: 0;
+	    width: auto;
+	    display: table;
+	    margin: auto;
+    }
+    @media #{$medium-only} { 
+	    width: auto;
+    }
+	header {
+		#logo-wrapper {
+			background: white;
+			margin: -4.5rem 0 0;
+			position: relative;
+			@media #{$small-only} {
+				padding: 5px 0 30px;
+				display: table;
+				margin: auto;
+			}
+			.mobile-logo {
+				img {
+					width: 200px;
+				}
+			}
+		}
+		.mobile-menu {
+				h4 {
+					width: 45%;
+					display: table;
+					margin: 0 auto;
+				}
+		}
+		nav {
+			margin-left: -53px;
+			ul {
+				padding-left: 40px;
+				list-style-type: none;
+				display: -webkit-box;      /* OLD - iOS 6-, Safari 3.1-6 */
+				display: -moz-box;         /* OLD - Firefox 19- (buggy but mostly works) */
+				display: -ms-flexbox;      /* TWEENER - IE 10 */
+				display: -webkit-flex;     /* NEW - Chrome */
+				display: flex; 
+				border-top: 1px solid $secondary-color;
+				border-bottom: 1px solid $secondary-color;
+				li {
+					color: $secondary-color;
+					flex: 1 0 auto;
+					-webkit-box-flex: 1 0 auto;      /* OLD - iOS 6-, Safari 3.1-6 */
+					-moz-box-flex: 1 0 auto;         /* OLD - Firefox 19- */
+					-webkit-flex: 1 0 auto;          /* Chrome */
+					-ms-flex: 1 0 auto;
+					position: relative;
+					text-align: center;
+					transition: all .6s ease;
+					margin: 0 5px;
+					ul {
+						display: none;
+						position: absolute;
+						top: 100%;
+						left: 0;
+						background: #f8f8f8;
+						min-width: 300px;
+						height: auto;
+						box-shadow: 0 4px 0 rgba(0, 0, 0, 0.2), 0 1px 0 rgba(255, 255, 255, 0.15) inset;
+						margin: 0;
+						padding: 0;
+						li {
+							text-align: left;
+							transition: all .3s ease;
+							a {
+								padding: .5rem .7rem;
+								display: block;
+								transition: all .3s ease;
+								width: 100%;
+								color: $secondary-color;
+								&:hover {
+									background: white;
+									color: $primary-color;
+									transition: all .3s ease;
+									font-family: raleway !important;
+									transition: all .3s ease;
+								}
+							}
+						}
+					}
+					&:hover {
+						transition: all .3s ease;
+						ul {
+							display: block;
+						}
+						.main-link {
+							font-family: isabella;
+							color: $primary-color;
+							text-transform: lowercase;
+							font-size: 30px !important;
+							line-height: 25px !important;
+						}
+					}
+					.main-link {
+						color: $secondary-color;
+						text-transform: uppercase;
+						display: block;
+						max-width: 106px;
+						min-width: 50px;
+						@media #{$large-only} {
+							min-width: 75px;
+						}
+						&:hover {
+							font-family: isabella;
+							color: $primary-color;
+							text-transform: lowercase;
+							font-size: 30px !important;
+							line-height: 25px !important;
+							transition: all .6s ease;
+						}
+					}
+				}
+			}
+		}
+	}
+	.home-banner {
+		background: url(../images/gold-2.jpg);
+		padding: .4rem;
+	}
+	#left-nav {
+			.circle-wrap {
+				border-radius: 50%;
+				width: 170px;
+				height: 170px;
+				position: relative;
+				overflow: hidden;
+				display: table;
+				margin: 0 auto;
+				background: url(../images/gold-2.jpg);
+				.circle {
+					border-radius: 50%;
+					width: 160px;
+					height: 160px;
+					position: relative;
+					overflow: hidden;
+					display: table;
+					margin: 5px auto;
+					z-index: 9999;
+					&:before {
+						content: '';
+						background: url(../images/april.png) no-repeat;
+						background-size: cover;
+						position: absolute;
+						width: 320px;
+						height: 200px;
+						left: -154px;
+					}
+				}
+			}
+			.aboutapril {
+				p {
+					font-weight: 200;
+					text-align: center;
+					font-size: 12px;
+				}
+			}
+			.secondary-nav {
+				/*h4 {
+					font-family: Isabella;
+					color: $primary-color;
+					font-size: 45px;
+					text-align: center;
+					border-top: 1px solid $secondary-color;
+					border-bottom: 1px solid $secondary-color;
+					padding: 0;
+					line-height: 30px;
+				}*/
+				ul {
+					list-style: none;
+					padding: 0;
+					margin: 0;
+					li {
+						text-align: center;
+						line-height: 23px;
+						a {
+							color: $body-font-color;
+							text-transform: uppercase;
+							font-size: 13px;
+						}
+						&:hover {
+							a {
+								color: $primary-color;
+							}
+						}
+					}
+				}
+			}
+	}
+	.home-content {
+		h3 {
+			font-family: Isabella;
+			color: $primary-color;
+			text-align: center;
+			font-size: 45px;
+		}
+		p {
+			font-size: 12px;
+			text-align: center;
+		 }
+		
+	}
+	.blog-post-wrapper {
+		@include grid-row; 
+		.blog-columns {
+			@include grid-column(9);
+			padding: .055rem !important;
+			position: relative;
+			transition: all .3s ease;
+			cursor: pointer;
+			transition:opacity 0.4s linear;
+			@media #{$small-only} {
+				@include grid-column(18);
+			}
+			&:hover {
+				transition: all .3s ease;
+				.blog-meta {
+					visibility: visible !important;
+					transition: all .3s ease;
+					opacity:1 !important;
+				}
+			}
+			.meta-wrapper {
+				width: 100%;
+				height: 100%;
+				.blog-meta {
+					position: absolute;
+					width: 100%;
+					height: 100%;
+					text-align: center;
+					background: $overlay;
+					padding: 1.3rem;
+					transition: all .3s ease;
+					z-index: 999999;
+					opacity:0;
+					transition:opacity 0.4s linear;
+					@media #{$small-only} {
+						opacity: 1;
+					}
+					.blog-title {
+						font-size: 33px;
+					}
+					.read-more {
+						font-size: 16px;
+						font-family: raleway !important;
+						display: table;
+						margin: auto;
+						width: 75%;
+						text-transform: uppercase;
+					}
+				}
+			}
+		}
+	}
+	.social-media {
+		ul {
+			list-style: none;
+			li {
+				text-align: center;
+			}
+		}
+	}		
+}
+
+.footer-wrap {
+	p {
+		font-size: 11px;
+		font-weight: 200;
+		letter-spacing: -.2px;
+	}
+}
